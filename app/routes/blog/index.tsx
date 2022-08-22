@@ -13,7 +13,7 @@ export async function loader() {
     .then((list) => (blogs = list))
     .then((blogArray) =>
       blogArray.filter((singleBlog) => {
-        if (singleBlog.is_archived) console.log(singleBlog);
+        if (singleBlog.is_archived) archived.push(singleBlog);
       })
     );
   let blogPageData = {

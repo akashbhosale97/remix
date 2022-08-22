@@ -4,6 +4,7 @@ import Skeleton from 'react-loading-skeleton';
 import ArchiveRelative from '~/components/archive-relative';
 import RenderComponents from '~/components/render-components';
 import { getBlogPostRes, getPageRes } from '~/helpers';
+import parse from 'html-react-parser';
 
 export async function loader({ params }: any) {
   let blogPostRes = await getBlogPostRes(`/blog/${params.blog}`);
@@ -54,7 +55,7 @@ const BlogPage = () => {
           )}
           {blogPost.blogPostRes && blogPost.blogPostRes.body ? (
             <div {...(blogPost.blogPostRes.$?.body as {})}>
-              {blogPost.blogPostRes.body}
+              {parse(blogPost.blogPostRes.body)}
             </div>
           ) : (
             <Skeleton height={800} width={600} />
