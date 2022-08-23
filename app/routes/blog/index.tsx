@@ -1,9 +1,14 @@
+import { MetaFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import Skeleton from 'react-loading-skeleton';
 import ArchiveRelative from '~/components/archive-relative';
 import BlogList from '~/components/blog-list';
 import RenderComponents from '~/components/render-components';
 import { getBlogListRes, getPageRes } from '~/helpers';
+
+export const meta: MetaFunction = ({ params }) => ({
+  title: 'blog',
+});
 
 export async function loader() {
   let archived: any = [];

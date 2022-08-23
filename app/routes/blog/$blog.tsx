@@ -5,6 +5,11 @@ import ArchiveRelative from '~/components/archive-relative';
 import RenderComponents from '~/components/render-components';
 import { getBlogPostRes, getPageRes } from '~/helpers';
 import parse from 'html-react-parser';
+import { MetaFunction } from '@remix-run/node';
+
+export const meta: MetaFunction = ({ params }) => ({
+  title: params.blog,
+});
 
 export async function loader({ params }: any) {
   let blogPostRes = await getBlogPostRes(`/blog/${params.blog}`);
