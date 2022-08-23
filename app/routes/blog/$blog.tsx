@@ -1,4 +1,4 @@
-import { Meta, useLoaderData, useParams } from '@remix-run/react';
+import { Meta, useLoaderData } from '@remix-run/react';
 import moment from 'moment';
 import Skeleton from 'react-loading-skeleton';
 import ArchiveRelative from '~/components/archive-relative';

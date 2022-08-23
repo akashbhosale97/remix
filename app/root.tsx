@@ -75,7 +75,7 @@ export default function App() {
         </Layout>
         <ScrollRestoration />
         <Scripts />
-        <LiveReload />
+        {process.env.NODE_ENV === 'development' ? <LiveReload /> : null}
       </body>
     </html>
   );
