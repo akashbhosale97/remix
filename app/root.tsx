@@ -10,10 +10,11 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from '@remix-run/react';
 import Header from './components/header';
 import Footer from './components/footer';
-import { getHeaderRes } from './helpers';
+import { getFooterRes, getHeaderRes } from './helpers';
 
 export const meta: MetaFunction = () => {
   return {
@@ -24,8 +25,13 @@ export const meta: MetaFunction = () => {
   };
 };
 
-export function loader() {
-  return getHeaderRes();
+export async function loader() {
+  let headerRes = await getHeaderRes();
+  let footerRes = await getFooterRes();
+  return {
+    headerRes,
+    footerRes,
+  };
 }
 
 export function links() {
@@ -76,11 +82,12 @@ export default function App() {
 }
 
 function Layout({ children }: any) {
+  const loaders = useLoaderData();
   return (
     <>
-      <Header />
+      <Header headerData={loaders.headerRes} />
       {children}
-      <Footer />
+      <Footer footerData={loaders.footerRes} />
     </>
   );
 }

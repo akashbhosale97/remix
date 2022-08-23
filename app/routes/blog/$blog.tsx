@@ -1,4 +1,4 @@
-import { useLoaderData } from '@remix-run/react';
+import { Meta, useLoaderData, useParams } from '@remix-run/react';
 import moment from 'moment';
 import Skeleton from 'react-loading-skeleton';
 import ArchiveRelative from '~/components/archive-relative';
@@ -7,9 +7,11 @@ import { getBlogPostRes, getPageRes } from '~/helpers';
 import parse from 'html-react-parser';
 import { MetaFunction } from '@remix-run/node';
 
-export const meta: MetaFunction = ({ params }) => ({
-  title: params.blog,
-});
+export const meta: MetaFunction = ({ params }) => {
+  return {
+    title: `${params.blog?.charAt(0).toUpperCase()}${params.blog?.slice(1)}`,
+  };
+};
 
 export async function loader({ params }: any) {
   let blogPostRes = await getBlogPostRes(`/blog/${params.blog}`);
@@ -24,6 +26,7 @@ const BlogPage = () => {
   const blogPost = useLoaderData();
   return (
     <>
+      <Meta />
       {blogPost.bannerData ? (
         <RenderComponents
           pageComponents={blogPost.bannerData.page_components}

@@ -1,5 +1,5 @@
 import { MetaFunction } from '@remix-run/node';
-import { useLoaderData } from '@remix-run/react';
+import { Meta, useLoaderData } from '@remix-run/react';
 import RenderComponents from '~/components/render-components';
 import { getPageRes } from '~/helpers';
 
@@ -8,15 +8,17 @@ export function loader() {
 }
 
 export const meta: MetaFunction = () => {
+  const pageData = useLoaderData();
   return {
-    title: 'home',
+    title: pageData.title,
   };
 };
 
 export default function Index() {
-  let pageData = useLoaderData();
+  const pageData = useLoaderData();
   return (
     <>
+      <Meta />
       <RenderComponents
         pageComponents={pageData.page_components}
         blogPost={null}

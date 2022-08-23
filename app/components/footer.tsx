@@ -1,15 +1,9 @@
 import { Link, useLoaderData } from '@remix-run/react';
 import parse from 'html-react-parser';
 import { onEntryChange } from '../sdk';
-import { getFooterRes } from '../helpers';
 import Skeleton from 'react-loading-skeleton';
 
-export function loader() {
-  return getFooterRes();
-}
-
-export default function Footer() {
-  const footerData = useLoaderData();
+export default function Footer({ footerData }: any) {
   return (
     <footer>
       <div className='max-width footer-div'>
@@ -32,12 +26,12 @@ export default function Footer() {
           <nav>
             <ul className='nav-ul'>
               {footerData ? (
-                footerData.navigation_menu.map((menu: any) => (
+                footerData.navigation.link.map((menu: any) => (
                   <li
                     className='footer-nav-li'
-                    key={menu.label}
-                    {...menu.$?.label}>
-                    <Link to={menu.label}>{menu.label}</Link>
+                    key={menu.title}
+                    {...menu.$?.title}>
+                    <Link to={menu.href}>{menu.title}</Link>
                   </li>
                 ))
               ) : (
@@ -82,6 +76,5 @@ export default function Footer() {
         </div>
       )}
     </footer>
-    // <></>
   );
 }
