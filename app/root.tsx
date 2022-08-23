@@ -3,6 +3,8 @@ import appcss from '~/styles/app.css';
 import jsonpreview from '~/styles/json-preview.css';
 import thirdparty from '~/styles/third-party.css';
 import tooltip from '~/styles/tool-tip.css';
+import nprogressStyles from 'nprogress/nprogress.css';
+import NProgress from 'nprogress';
 import {
   Links,
   LiveReload,
@@ -11,10 +13,12 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  useTransition,
 } from '@remix-run/react';
 import Header from './components/header';
 import Footer from './components/footer';
 import { getFooterRes, getHeaderRes } from './helpers';
+import { useEffect } from 'react';
 
 export const meta: MetaFunction = () => {
   return {
@@ -59,10 +63,21 @@ export function links() {
       rel: 'stylesheet',
       href: tooltip,
     },
+    { rel: 'stylesheet', href: nprogressStyles },
   ];
 }
 
 export default function App() {
+  const transition = useTransition();
+
+  useEffect(() => {
+    if (transition.state === 'loading' || transition.state === 'submitting') {
+      NProgress.start();
+    } else {
+      NProgress.done();
+    }
+  }, [transition.state]);
+
   return (
     <html lang='en'>
       <head>

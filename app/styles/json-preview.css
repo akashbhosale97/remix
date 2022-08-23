@@ -26,7 +26,7 @@
   font-weight: normal !important;
 }
 
-.container ~ .property {
+.container~.property {
   color: #c8501e !important;
 }
 
@@ -39,6 +39,7 @@
   font-weight: 600 !important;
   color: rgb(0, 43, 54) !important;
 }
+
 .json-preview {
   width: 50px;
   text-align: center;
@@ -50,6 +51,6 @@
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .json-preview {
-    top: 2.3rem;
+    top: 1.7rem;
   }
 }
