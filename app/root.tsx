@@ -15,11 +15,14 @@ import Header from './components/header';
 import Footer from './components/footer';
 import { getHeaderRes } from './helpers';
 
-export const meta: MetaFunction = () => ({
-  charset: 'utf-8',
-  title: 'Contentstack-Remix-Stater-App',
-  viewport: 'width=device-width,initial-scale=1',
-});
+export const meta: MetaFunction = () => {
+  return {
+    charset: 'utf-8',
+    title: 'Contentstack-Remix-Stater-App',
+    viewport: 'width=device-width,initial-scale=1',
+    description: 'Welcome to Tekt',
+  };
+};
 
 export function loader() {
   return getHeaderRes();
