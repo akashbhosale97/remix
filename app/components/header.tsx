@@ -1,7 +1,6 @@
 import { Link, useLocation } from '@remix-run/react';
 import parse from 'html-react-parser';
 import Tooltip from './tool-tip';
-// import { onEntryChange } from '../sdk';
 import Skeleton from 'react-loading-skeleton';
 
 export default function Header({ headerData }: any) {

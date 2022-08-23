@@ -1,6 +1,5 @@
-import { Link, useLoaderData } from '@remix-run/react';
+import { Link } from '@remix-run/react';
 import parse from 'html-react-parser';
-import { onEntryChange } from '../sdk';
 import Skeleton from 'react-loading-skeleton';
 
 export default function Footer({ footerData }: any) {

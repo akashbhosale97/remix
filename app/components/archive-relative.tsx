@@ -1,26 +1,26 @@
 import { Link } from '@remix-run/react';
 import parse from 'html-react-parser';
 
-// type AdditionalParam = {
-//   title: string;
-//   body: string;
-// }
+type AdditionalParam = {
+  title: string;
+  body: string;
+};
 
-// type Blog = {
-//   url: string;
-//   body: string;
-//   title: string;
-//   $: AdditionalParam;
-// }
+type Blog = {
+  url: string;
+  body: string;
+  title: string;
+  $: AdditionalParam;
+};
 
-// type BlogListProps = {
-//   blogs: [Blog];
-// }
+type BlogListProps = {
+  blogs: [Blog];
+};
 
-export default function ArchiveRelative({ blogs }: any) {
+export default function ArchiveRelative({ blogs }: BlogListProps) {
   return (
     <>
-      {blogs?.map((blog: any, idx: any) => (
+      {blogs?.map((blog, idx) => (
         <Link to={blog.url} key={idx}>
           <div>
             <h4 {...(blog.$?.title as {})}>{blog.title}</h4>

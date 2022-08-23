@@ -1,26 +1,26 @@
 import { Link } from '@remix-run/react';
-// import { Image, Action } from "../typescript/action";
+import { Image, Action } from '../typescript/action';
 
-// type AdditionalParam = {
-//   banner_title: string;
-//   banner_description: string;
-// }
+type AdditionalParam = {
+  banner_title: string;
+  banner_description: string;
+};
 
-// type Banner = {
-//   bg_color: string;
-//   text_color: string;
-//   banner_title: string;
-//   banner_description: string;
-//   call_to_action: Action;
-//   banner_image: Image;
-//   $: AdditionalParam;
-// }
+type Banner = {
+  bg_color: string;
+  text_color: string;
+  banner_title: string;
+  banner_description: string;
+  call_to_action: Action;
+  banner_image: Image;
+  $: AdditionalParam;
+};
 
-// type BannerProps = {
-//   banner: Banner;
-// }
+type BannerProps = {
+  banner: Banner;
+};
 
-export default function HeroBanner(props: any) {
+export default function HeroBanner(props: BannerProps) {
   const banner = props.banner;
 
   return (

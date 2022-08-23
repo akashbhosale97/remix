@@ -1,38 +1,41 @@
-import React from 'react';
 import parse from 'html-react-parser';
-// import { Action,Image } from '../typescript/action';
+import { Action, Image } from '../typescript/action';
 
-// type AdditionalParam = {
-//   title_h2?: string;
-//   title_h3?: string;
-//   description?: string;
-// }
+type AdditionalParam = {
+  title_h2?: string;
+  title_h3?: string;
+  description?: string;
+};
 
-// type Bucket = {
-//   title_h3: string;
-//   description: string;
-//   icon: Image;
-//   $: AdditionalParam;
-//   url: string;
-// }
+type Bucket = {
+  title_h3: string;
+  description: string;
+  icon: Image;
+  $: AdditionalParam;
+  url: string;
+};
 
-// type BucketsList = {
-//   title_h3: string;
-//   description: string;
-//   url: string;
-//   call_to_action: Action;
-//   icon: Image;
-//   $: AdditionalParam;
-// }
+type BucketsList = {
+  title_h3: string;
+  description: string;
+  url: string;
+  call_to_action: Action;
+  icon: Image;
+  $: AdditionalParam;
+};
 
-// type BucketProps = {
-//   title_h2: string;
-//   buckets:[BucketsList];
-//   $: AdditionalParam;
-// }
+type BucketProps = {
+  title_h2: string;
+  buckets: [BucketsList];
+  $: AdditionalParam;
+};
 
-export default function AboutSectionBucket({ sectionWithBuckets }: any) {
-  function bucketContent(bucket: any, index: number) {
+export default function AboutSectionBucket({
+  sectionWithBuckets,
+}: {
+  sectionWithBuckets: BucketProps;
+}) {
+  function bucketContent(bucket: Bucket, index: number) {
     return (
       <div className='mission-content-section' key={index}>
         {bucket.icon && (
@@ -71,14 +74,12 @@ export default function AboutSectionBucket({ sectionWithBuckets }: any) {
       <div className='mission-section'>
         <div className='mission-content-top'>
           {sectionWithBuckets?.buckets.map(
-            (bucket: any, index: any) =>
-              index < 2 && bucketContent(bucket, index)
+            (bucket, index) => index < 2 && bucketContent(bucket, index)
           )}
         </div>
         <div className='mission-content-bottom'>
           {sectionWithBuckets.buckets.map(
-            (bucket: any, index: any) =>
-              index >= 2 && bucketContent(bucket, index)
+            (bucket, index) => index >= 2 && bucketContent(bucket, index)
           )}
         </div>
       </div>

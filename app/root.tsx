@@ -5,6 +5,9 @@ import thirdparty from '~/styles/third-party.css';
 import tooltip from '~/styles/tool-tip.css';
 import nprogressStyles from 'nprogress/nprogress.css';
 import NProgress from 'nprogress';
+import reactSkeleton from 'react-loading-skeleton/dist/skeleton.css';
+import livePreview from '@contentstack/live-preview-utils/dist/main.css';
+
 import {
   Links,
   LiveReload,
@@ -64,6 +67,8 @@ export function links() {
       href: tooltip,
     },
     { rel: 'stylesheet', href: nprogressStyles },
+    { rel: 'stylesheet', href: reactSkeleton },
+    { rel: 'stylesheet', href: livePreview },
   ];
 }
 

@@ -7,16 +7,16 @@ import BlogSection from './blog-section';
 import SectionBucket from './section-bucket';
 import AboutSectionBucket from './about-section-bucket';
 import SectionWithHtmlCode from './section-with-html-code';
-// import { RenderProps } from "../typescript/component";
+import { RenderProps } from '../typescript/component';
 
-export default function RenderComponents(props: any) {
+export default function RenderComponents(props: RenderProps) {
   const { pageComponents, blogPost, entryUid, contentTypeUid, locale } = props;
   return (
     <div
       data-pageref={entryUid}
       data-contenttype={contentTypeUid}
       data-locale={locale}>
-      {pageComponents?.map((component: any, key: number) => {
+      {pageComponents?.map((component, key) => {
         if (component.hero_banner) {
           return blogPost ? (
             <BlogBanner
