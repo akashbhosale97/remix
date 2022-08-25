@@ -17,8 +17,8 @@ export async function loader({ params }: any) {
   let blogPostRes = await getBlogPostRes(`/blog/${params.blog}`);
   let bannerData = await getPageRes('/blog');
   let blogPostData = {
-    blogPostRes,
-    bannerData,
+    Blog: blogPostRes,
+    Banner: bannerData,
   };
   return blogPostData;
 }
@@ -27,33 +27,31 @@ const BlogPage = () => {
   return (
     <>
       <Meta />
-      {blogPost.bannerData ? (
+      {blogPost.Banner ? (
         <RenderComponents
-          pageComponents={blogPost.bannerData.page_components}
+          pageComponents={blogPost.Banner.page_components}
           blogPost
           contentTypeUid='blog_post'
-          entryUid={blogPost.bannerData?.uid}
-          locale={blogPost.bannerData?.locale}
+          entryUid={blogPost.Banner?.uid}
+          locale={blogPost.Banner?.locale}
         />
       ) : (
         <Skeleton height={400} />
       )}
       <div className='blog-container'>
         <article className='blog-detail'>
-          {blogPost.blogPostRes && blogPost.blogPostRes.title ? (
-            <h2 {...(blogPost.blogPostRes.$?.title as {})}>
-              {blogPost.blogPostRes.title}
-            </h2>
+          {blogPost.Blog && blogPost.Blog.title ? (
+            <h2 {...(blogPost.Blog.$?.title as {})}>{blogPost.Blog.title}</h2>
           ) : (
             <h2>
               <Skeleton />
             </h2>
           )}
-          {blogPost.blogPostRes && blogPost.blogPostRes.date ? (
-            <p {...(blogPost.blogPostRes.$?.date as {})}>
-              {moment(blogPost.blogPostRes.date).format('ddd, MMM D YYYY')},{' '}
-              <strong {...(blogPost.blogPostRes.author[0].$?.title as {})}>
-                {blogPost.blogPostRes.author[0].title}
+          {blogPost.Blog && blogPost.Blog.date ? (
+            <p {...(blogPost.Blog.$?.date as {})}>
+              {moment(blogPost.Blog.date).format('ddd, MMM D YYYY')},{' '}
+              <strong {...(blogPost.Blog.author[0].$?.title as {})}>
+                {blogPost.Blog.author[0].title}
               </strong>
             </p>
           ) : (
@@ -61,9 +59,9 @@ const BlogPage = () => {
               <Skeleton width={300} />
             </p>
           )}
-          {blogPost.blogPostRes && blogPost.blogPostRes.body ? (
-            <div {...(blogPost.blogPostRes.$?.body as {})}>
-              {parse(blogPost.blogPostRes.body)}
+          {blogPost.Blog && blogPost.Blog.body ? (
+            <div {...(blogPost.Blog.$?.body as {})}>
+              {parse(blogPost.Blog.body)}
             </div>
           ) : (
             <Skeleton height={800} width={600} />
@@ -71,22 +69,21 @@ const BlogPage = () => {
         </article>
         <div className='blog-column-right'>
           <div className='related-post'>
-            {blogPost.bannerData &&
-            blogPost.bannerData?.page_components[2].widget ? (
+            {blogPost.Banner && blogPost.Banner?.page_components[2].widget ? (
               <h2
-                {...(blogPost.bannerData?.page_components[2].widget.$
+                {...(blogPost.Banner?.page_components[2].widget.$
                   ?.title_h2 as {})}>
-                {blogPost.bannerData?.page_components[2].widget.title_h2}
+                {blogPost.Banner?.page_components[2].widget.title_h2}
               </h2>
             ) : (
               <h2>
                 <Skeleton />
               </h2>
             )}
-            {blogPost.blogPostRes && blogPost.blogPostRes.related_post ? (
+            {blogPost.Blog && blogPost.Blog.related_post ? (
               <ArchiveRelative
-                {...blogPost.blogPostRes.$?.related_post}
-                blogs={blogPost.blogPostRes.related_post}
+                {...blogPost.Blog.$?.related_post}
+                blogs={blogPost.Blog.related_post}
               />
             ) : (
               <Skeleton width={300} height={500} />

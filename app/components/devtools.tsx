@@ -1,4 +1,3 @@
-import { useLoaderData } from '@remix-run/react';
 import { useState, useEffect } from 'react';
 import { JSONTree } from 'react-json-tree';
 import Tooltip from './tool-tip';
@@ -51,9 +50,12 @@ function filterObject(inputObject: any) {
 }
 
 const DevTools = ({ response }: any) => {
-  const loader = useLoaderData();
-  console.log(loader);
-  const filteredJson = filterObject(response);
+  const json = {
+    Header: response[0].data.headerRes,
+    Footer: response[0].data.footerRes,
+    Page: response[1].data,
+  };
+  const filteredJson = filterObject(json);
   const [forceUpdate, setForceUpdate] = useState(0);
 
   function copyObject(object: any) {
@@ -108,7 +110,15 @@ const DevTools = ({ response }: any) => {
           <div className='modal-body'>
             {response ? (
               <pre id='jsonViewer'>
-                {response && <JSONTree data={response} theme={theme} />}
+                {response && (
+                  <JSONTree
+                    data={json}
+                    theme={theme}
+                    hideRoot={true}
+                    sortObjectKeys={true}
+                    keyPath={[0]}
+                  />
+                )}
               </pre>
             ) : (
               ''

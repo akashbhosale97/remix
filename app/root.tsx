@@ -16,11 +16,12 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  useMatches,
   useTransition,
 } from '@remix-run/react';
 import Header from './components/header';
 import Footer from './components/footer';
-import { getFooterRes, getHeaderRes } from './helpers';
+import { getFooterRes, getHeaderRes, getPageRes } from './helpers';
 import { useEffect } from 'react';
 import DevTools from './components/devtools';
 
@@ -33,7 +34,7 @@ export const meta: MetaFunction = () => {
   };
 };
 
-export async function loader() {
+export async function loader({ params }: any) {
   let headerRes = await getHeaderRes();
   let footerRes = await getFooterRes();
   return {
@@ -107,10 +108,11 @@ export default function App() {
 
 function Layout({ children }: any) {
   const loaders = useLoaderData();
+  const match = useMatches();
   return (
     <>
       <Header headerData={loaders.headerRes} />
-      <DevTools response={loaders} />
+      <DevTools response={match} />
       {children}
       <Footer footerData={loaders.footerRes} />
     </>
