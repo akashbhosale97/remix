@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, MutableRefObject } from 'react';
+import { useRef, useEffect, MutableRefObject } from 'react';
 
 type TooltipProps = {
   children?: JSX.Element | JSX.Element[];

@@ -22,6 +22,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import { getFooterRes, getHeaderRes } from './helpers';
 import { useEffect } from 'react';
+import DevTools from './components/devtools';
 
 export const meta: MetaFunction = () => {
   return {
@@ -74,7 +75,6 @@ export function links() {
 
 export default function App() {
   const transition = useTransition();
-
   useEffect(() => {
     if (transition.state === 'loading' || transition.state === 'submitting') {
       NProgress.start();
@@ -96,6 +96,10 @@ export default function App() {
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === 'development' ? <LiveReload /> : null}
+        <script
+          src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js'
+          integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM'
+          crossOrigin='anonymous'></script>
       </body>
     </html>
   );
@@ -106,6 +110,7 @@ function Layout({ children }: any) {
   return (
     <>
       <Header headerData={loaders.headerRes} />
+      <DevTools response={loaders} />
       {children}
       <Footer footerData={loaders.footerRes} />
     </>
