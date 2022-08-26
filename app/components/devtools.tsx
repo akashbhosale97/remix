@@ -19,9 +19,9 @@ const theme = {
   base08: '#f92672',
   base09: '#fd971f',
   base0A: '#f4bf75',
-  base0B: '#a6e22e',
-  base0C: '#a1efe4',
-  base0D: '#66d9ef',
+  base0B: '#5d9ccb',
+  base0C: '#c8501e',
+  base0D: '#c8501e',
   base0E: '#ae81ff',
   base0F: '#cc6633',
 };
