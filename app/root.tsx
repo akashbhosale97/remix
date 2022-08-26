@@ -21,7 +21,7 @@ import {
 } from '@remix-run/react';
 import Header from './components/header';
 import Footer from './components/footer';
-import { getFooterRes, getHeaderRes, getPageRes } from './helpers';
+import { getFooterRes, getHeaderRes } from './helpers';
 import { useEffect } from 'react';
 import DevTools from './components/devtools';
 
