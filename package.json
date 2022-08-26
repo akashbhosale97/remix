@@ -1,5 +1,10 @@
 {
+  "name": "contentstack-remix-starter-app",
+  "description": "A starter app for Contentstack and Remix",
+  "version": "1.0.0",
   "private": true,
+  "author": "Contentstack",
+  "license": "MIT",
   "sideEffects": false,
   "scripts": {
     "build": "remix build",

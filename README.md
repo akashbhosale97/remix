@@ -1,53 +1,27 @@
-# Welcome to Remix!
+[![Contentstack Logo](/public/contentstack.png)](https://www.contentstack.com/)
 
-- [Remix Docs](https://remix.run/docs)
+# Build a Starter Website with Remix and Contentstack
 
-## Development
+About Contentstack: Contentstack is a headless CMS with an API-first approach that puts content at the centre. It is designed to simplify the process of publication by separating code from content.
 
-From your terminal:
+About this project: Remix is a JavaScript framework for dynamic websites with rich user interfaces. This guide will help you create a starter marketing website built using the Remix framework with minimal steps.
 
-```sh
-npm run dev
-```
+![contentstack-remix-vercel-app](/public/starter-app.png)
 
-This starts your app in development mode, rebuilding assets on file changes.
+## Live Demo
 
-## Deployment
+You can check the [live demo](https://contentstack-remix.vercel.app/) to get first-hand experience of the website.
 
-First, build your app for production:
+## Tutorial
 
-```sh
-npm run build
-```
+We have created an in-depth tutorial on how you can create a Remix starter website using Contentstack’s Node.js SDK and fetch its content from Contentstack.
 
-Then run the app in production mode:
+[Build Website using Remix and Contentstack](https://www.contentstack.com/docs/developers/sample-apps/build-a-starter-website-with-remix-and-contentstack/)
 
-```sh
-npm start
-```
+**More Resources**
 
-Now you'll need to pick a host to deploy it to.
+Read Contentstack [docs](https://www.contentstack.com/docs/)
 
-### DIY
+Region support [docs](https://www.contentstack.com/docs/developers/selecting-region-in-contentstack-starter-apps)
 
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `remix build`
-
-- `build/`
-- `public/build/`
-
-### Using a Template
-
-When you ran `npx create-remix@latest` there were a few choices for hosting. You can run that again to create a new project, then copy over your `app/` folder to the new project that's pre-configured for your target server.
-
-```sh
-cd ..
-# create a new project, and pick a pre-configured host
-npx create-remix@latest
-cd my-new-remix-app
-# remove the new project's app (not the old one!)
-rm -rf app
-# copy your app over
-cp -R ../my-old-remix-app/app app
-```
+Learn about [Remix](https://remix.run/docs/en/v1)
