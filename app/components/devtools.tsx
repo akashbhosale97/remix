@@ -117,6 +117,9 @@ const DevTools = ({ response }: any) => {
                     hideRoot={true}
                     sortObjectKeys={true}
                     keyPath={[0]}
+                    getItemString={(type, data, itemType, itemString) => (
+                      <span>{itemString}</span>
+                    )}
                   />
                 )}
               </pre>
