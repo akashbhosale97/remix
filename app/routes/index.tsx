@@ -9,8 +9,6 @@ export function loader() {
 
 export const meta: MetaFunction = () => {
   const pageData = useLoaderData();
-  console.log(pageData);
-
   return {
     title: pageData.title,
   };
