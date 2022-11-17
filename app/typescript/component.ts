@@ -1,4 +1,4 @@
-import { Action, Image } from './action';
+import { Action, Image } from "./action";
 
 type AdditionalParam = {
   title: string;
@@ -129,8 +129,8 @@ export type FeaturedBlogData = {
 
 export type RenderProps = {
   blogPost?: boolean;
-  contentTypeUid: string;
-  entryUid: string;
-  locale: string;
+  contentTypeUid?: string;
+  entryUid?: string;
+  locale?: string;
   pageComponents: Component[];
 };

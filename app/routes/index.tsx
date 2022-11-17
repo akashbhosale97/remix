@@ -1,10 +1,10 @@
-import { MetaFunction } from '@remix-run/node';
-import { Meta, useLoaderData } from '@remix-run/react';
-import RenderComponents from '~/components/render-components';
-import { getPageRes } from '~/helpers';
+import { MetaFunction } from "@remix-run/node";
+import { Meta, useLoaderData } from "@remix-run/react";
+import RenderComponents from "~/components/render-components";
+import { getPageRes } from "~/helpers";
 
 export function loader() {
-  return getPageRes('/');
+  return getPageRes("/");
 }
 
 export const meta: MetaFunction = () => {
@@ -21,7 +21,7 @@ export default function Index() {
       <Meta />
       <RenderComponents
         pageComponents={pageData.page_components}
-        blogPost={null}
+        blogPost={false}
       />
     </>
   );
